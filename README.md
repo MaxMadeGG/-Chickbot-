@@ -2,7 +2,7 @@
 
 Wheel-legged balancing robot. Two gimbal motors drive the wheels with my own FOC code, two servos move the legs so it can crouch, and an MPU-6050 is used for balancing.
 > **Status:** Work in progress. This repository currently contains the v2.0 custom PCB design, schematic and ownFOC code.
-[DEMO](https://youtube.com/shorts/aNbwgdx8i7I?si=RKKSs-6FwYw2KxhV)
+[DEMO](https://youtube.com/shorts/mz5cjng6o1k?si=qXF_rx4VsPLrTCHq)
 ## Parts
 
 | Part | Notes |
@@ -20,13 +20,12 @@ Wheel-legged balancing robot. Two gimbal motors drive the wheels with my own FOC
 | 2x 220 µF cap | one on each driver, needed or the ESP32 resets |
 
 ## Schematic and PCB
-<img width="2160" height="1925" alt="image" src="https://github.com/user-attachments/assets/1bbf493b-a859-4a68-800b-6bd59aa50618" />
 
 The full schematic and PCB files are in the repo. The encoders both use address 0x36, so each one is on its own I2C bus.
 It was made in easyEDA.
-[gerber](self-balancing-robot-cat-gerber-v2.0.zip)
-[schematic](schematic.epro2)
-[PCB](PCB.epro2)
+[gerber]()
+[schematic]()
+[PCB]()
 
 ## Things to know
 
@@ -46,16 +45,16 @@ Board v1:
 > **Note:** These v1 issues have all been resolved in the v2 layout included in this repository.
 
 Board v2:
-[gerber](self-balancing-robot-cat-gerber-v2.0.zip)
-[schematic](schematic.epro2)
-[PCB](PCB.epro2)
+[gerber]()
+[schematic]()
+[PCB]()
 - motor 1 IN3 and EN were swapped in my code, so motor 1 only twitched. Took a while to find...
 - SV2 is on GPIO12, not 13
 - encoders were mounted the wrong way and too far from the magnet
 
 ## Software
 
-I don't use the SimpleFOC library. On my board it didn't output any PWM, so I wrote my own [FOC](Quad-code-ownFOC.zip) using ledcWrite. The servos also use ledcWrite directly instead of ESP32Servo, so they don't fight with the motors over timers.
+I don't use the SimpleFOC library. On my board it didn't output any PWM, so I wrote my own [FOC]() using ledcWrite. The servos also use ledcWrite directly instead of ESP32Servo, so they don't fight with the motors over timers.
 
 The control loop runs at a fixed 2 kHz. More about the code later.
 
