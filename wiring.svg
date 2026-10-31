@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 616" width="760" height="616" role="img" aria-label="Overbot wiring: both encoders are stuck at 0x36, so each gets its own I2C bus">
+  <style>
+    :root { color-scheme: light dark; }
+    .ti  { font-size: 15px; font-weight: 600; fill: #1f2328; }
+    .sub { font-size: 11.5px; fill: #656d76; }
+    .nm  { font-size: 13px; font-weight: 600; fill: #1f2328; }
+    .bd  { font-size: 11.5px; fill: #656d76; }
+    .bx  { fill: none; stroke: #afb8c1; stroke-width: 1.25; }
+    .bxa { fill: #ddf4ff; stroke: #0969da; stroke-width: 2; }
+    .wire { fill: none; stroke: #afb8c1; stroke-width: 1.25; }
+    .head { fill: #afb8c1; }
+    @media (prefers-color-scheme: dark) {
+      .ti, .nm { fill: #e6edf3; }
+      .sub, .bd { fill: #8b949e; }
+      .bx { stroke: #484f58; }
+      .bxa { fill: #121d2f; stroke: #58a6ff; }
+      .wire { stroke: #484f58; }
+      .head { fill: #484f58; }
+    }
+  </style>
+  <defs>
+    <marker id="wire-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" class="head"/>
+    </marker>
+  </defs>
+  <g font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif">
+
+    <text class="ti" x="24" y="30">Both encoders are stuck at 0x36, so each gets its own I2C bus</text>
+    <text class="sub" x="24" y="50">Overbot wiring as built on board v2 · ESP32 NodeMCU-32S</text>
+
+    <g class="wire">
+      <path d="M204 124H252" marker-end="url(#wire-arrow)"/>
+      <path d="M204 124H228V176H614V152" marker-end="url(#wire-arrow)"/>
+    </g>
+
+    <rect class="bx" x="24" y="96" width="180" height="56" rx="8"/>
+    <text class="nm" x="40" y="120">2S LiPo, 2600 mAh</text>
+    <text class="bd" x="40" y="136">7.4 V nominal</text>
+
+    <rect class="bx" x="252" y="96" width="220" height="56" rx="8"/>
+    <text class="nm" x="268" y="120">XL6009 boost — 10 V</text>
+    <text class="bd" x="268" y="136">Feeds both motor drivers only</text>
+
+    <rect class="bx" x="504" y="96" width="220" height="56" rx="8"/>
+    <text class="nm" x="520" y="120">Buck — 5 V</text>
+    <text class="bd" x="520" y="136">Feeds the ESP32 and servos</text>
+
+    <rect class="bx" x="24" y="184" width="712" height="56" rx="8"/>
+    <text class="nm" x="40" y="208">ESP32 NodeMCU-32S</text>
+    <text class="bd" x="40" y="224">Runs from the 5 V buck · 10k pulldowns on GPIO 5, 12 and 27 · battery sense on GPIO 35</text>
+
+    <g class="wire">
+      <path d="M40 240V524"/>
+      <path d="M40 316H64" marker-end="url(#wire-arrow)"/>
+      <path d="M40 420H64" marker-end="url(#wire-arrow)"/>
+      <path d="M40 524H64" marker-end="url(#wire-arrow)"/>
+      <path d="M404 240V524"/>
+      <path d="M404 316H428" marker-end="url(#wire-arrow)"/>
+      <path d="M404 420H428" marker-end="url(#wire-arrow)"/>
+      <path d="M404 524H428" marker-end="url(#wire-arrow)"/>
+    </g>
+
+    <rect class="bx" x="64" y="272" width="324" height="88" rx="8"/>
+    <text class="nm" x="80" y="296">Motor channel 1</text>
+    <text class="bd" x="80" y="312">Driver DRV8313 — IN 16 · 17 · 18, EN 5</text>
+    <text class="bd" x="80" y="328">Motor + AS5600 A, I2C bus 0, address 0x36</text>
+    <text class="bd" x="80" y="344">220 µF across VM and GND at the driver</text>
+
+    <rect class="bxa" x="64" y="376" width="324" height="88" rx="8"/>
+    <text class="nm" x="80" y="400">I2C bus 0 — SDA 21, SCL 19</text>
+    <text class="bd" x="80" y="416">Encoder A (0x36) and MPU-6050 (0x68)</text>
+    <text class="bd" x="80" y="432">VL53L0X front 0x30, XSHUT on GPIO 32</text>
+    <text class="bd" x="80" y="448">VL53L0X up 0x29, XSHUT on GPIO 4</text>
+
+    <rect class="bx" x="64" y="480" width="324" height="88" rx="8"/>
+    <text class="nm" x="80" y="504">Servos — SV1 GPIO 33, SV2 GPIO 12</text>
+    <text class="bd" x="80" y="520">Two MG90S on the 5 V rail</text>
+    <text class="bd" x="80" y="536">Moved one at a time; both together</text>
+    <text class="bd" x="80" y="552">browns out the 5 V rail</text>
+
+    <rect class="bx" x="428" y="272" width="308" height="88" rx="8"/>
+    <text class="nm" x="444" y="296">Motor channel 2</text>
+    <text class="bd" x="444" y="312">Driver DRV8313 — IN 25 · 26 · 14, EN 27</text>
+    <text class="bd" x="444" y="328">Motor + AS5600 B, I2C bus 1, address 0x36</text>
+    <text class="bd" x="444" y="344">220 µF across VM and GND at the driver</text>
+
+    <rect class="bxa" x="428" y="376" width="308" height="88" rx="8"/>
+    <text class="nm" x="444" y="400">I2C bus 1 — SDA 22, SCL 23</text>
+    <text class="bd" x="444" y="416">Encoder B alone, nothing else on it</text>
+    <text class="bd" x="444" y="432">The AS5600 address is fixed at 0x36,</text>
+    <text class="bd" x="444" y="448">so two encoders cannot share one bus</text>
+
+    <rect class="bx" x="428" y="480" width="308" height="88" rx="8"/>
+    <text class="nm" x="444" y="504">Buzzer — GPIO 13</text>
+    <text class="bd" x="444" y="520">Driven with digitalWrite, not LEDC</text>
+    <text class="bd" x="444" y="536">On LEDC it shares a timer with the</text>
+    <text class="bd" x="444" y="552">motor PWM and knocks out the encoders</text>
+
+    <text class="bd" x="24" y="592">Encoder A and encoder B are identical AS5600 parts. Only the bus differs.</text>
+  </g>
+</svg>
