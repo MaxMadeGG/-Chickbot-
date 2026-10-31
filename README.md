@@ -2,10 +2,13 @@
 
 Wheel-legged balancing robot. Two gimbal motors drive the wheels with my own FOC code, two servos move the legs so it can crouch, and an MPU-6050 is used for balancing.
 
+<img width="415" height="685" alt="image" src="https://github.com/user-attachments/assets/173afd0f-2de4-4b72-a6ed-0227af2da30c" />
+
+
 > **Status:** Work in progress. This repository contains the v2.0 custom PCB design, schematic and my own FOC + balance code. The robot balances — longest unaided run so far is **356 seconds** on open floor.
 
 [DEMO](https://youtube.com/shorts/mz5cjng6o1k?si=qXF_rx4VsPLrTCHq)
-
+[STORY](https://youtu.be/YVgm9i4lS-w?si=UW4NgbHa-_UMfGnS)
 ## Parts
 
 | Part | Notes |
@@ -24,6 +27,9 @@ Wheel-legged balancing robot. Two gimbal motors drive the wheels with my own FOC
 | 2x 220 µF cap | one on each driver, needed or the ESP32 resets |
 
 ## Wiring
+<img width="594" height="480" alt="image" src="https://github.com/user-attachments/assets/baca3bd1-b5c1-43fd-a6f9-d5bdd09a798f" />
+<img width="748" height="1000" alt="image" src="https://github.com/user-attachments/assets/a33e6a95-24b8-4806-b881-325c6d73dfaf" />
+
 
 
 ## Pin map
@@ -48,6 +54,8 @@ Wheel-legged balancing robot. Two gimbal motors drive the wheels with my own FOC
 - Trim the header pins! Two pins touched on a driver (EN and nFAULT), the driver stayed on all the time and it killed an ESP32.
 - The 10 V rail is the torque limit. The commutation amplitude is `volts / (SUPPLY * 0.5) * 127`, so with a 10 V supply the sine already clips above 5 V. Going from 4 V to 6 V tripled how long the robot balanced.
 - The 5 V rail browns out if both servos move at once, so the code moves one leg at a time.
+- <img width="1496" height="2000" alt="image" src="https://github.com/user-attachments/assets/89d5f76e-2eaa-4c08-8ae9-6c4deba52256" />
+
 
 ### Firmware
 
